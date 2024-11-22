@@ -63,7 +63,7 @@ content = "You must replace the **baseURL** in **hugo.toml** file when deploying
 # seo module: https://github.com/gethugothemes/hugo-modules/tree/master/seo-tools/basic-seo
 [metadata]
 keywords = ["Boilerplate", "Hugo"]
-description = "Hugo & Tailwindcss Starter"
+description = "Your Premier Partner for Data and AI Open Source Software Solutions"
 author = "zeon.studio"
 twitter = "zeon_studio"
 image = "images/og-image.png"
