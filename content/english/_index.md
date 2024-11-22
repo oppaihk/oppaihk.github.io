@@ -15,9 +15,9 @@ features:
     image: "/images/service-1.png"
     content: "OppAI delivers an all-encompassing range of solutions, from distribution to management of Data and AI open source software. Our offerings include:"
     bulletpoints:
-      - "Distribution of top Data and AI OSS products like Dify.AI and Screenpipe"
+      - "Distribution of top Data and AI OSS products like **Dify.AI and Screenpipe**"
       - "Expert reselling with custom solutions to cater to your specific needs"
-      - "Managed services for AI OSS products such as Kong, Redis, PostgreSQL, Kafka, Dify.AI and Screenpipe"
+      - "Managed services for AI OSS products such as **Kong, Redis, PostgreSQL, Kafka, Dify.AI and Screenpipe**"
       - "Customization and integration support"
       - "Fully responsive and scalable solutions for businesses of all sizes"
       - "**Open-source and community-driven** solutions for cost-effective and innovative operations"
