@@ -1,86 +1,148 @@
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Bot, BriefcaseBusiness, Database, Gauge, Lock, Workflow } from "lucide-react";
 
-const ServicesSection = () => {
-  const services = [
-    {
-      title: "Generative AI & LLM Developments",
-      description: "Groundbreaking tools and platforms to build, train, and deploy AI models. Comprehensive hosting, deployment, and robust managed services.",
-      icon: "🤖"
-    },
-    {
-      title: "AI Observability & Monitoring",
-      description: "Innovative observability solutions for continuous performance monitoring and optimization.",
-      icon: "📊"
-    },
-    {
-      title: "Data Governance & Analytics",
-      description: "Advanced solutions for data governance, quality, and analytics.",
-      icon: "📈"
-    },
-    {
-      title: "Vector Databases",
-      description: "Cutting-edge vector databases for efficient data management.",
-      icon: "💾"
-    },
-    {
-      title: "Developer Tools & Platforms",
-      description: "Essential tools and platforms to empower developers.",
-      icon: "🛠️"
-    },
-    {
-      title: "Security & Compliance",
-      description: "Holistic security and compliance solutions to safeguard operations.",
-      icon: "🔒"
-    },
-    {
-      title: "Data Privacy & Governance",
-      description: "Solutions for privacy management and ensuring data governance.",
-      icon: "🛡️"
-    },
-    {
-      title: "Federated & Distributed Systems",
-      description: "Expertise in managing federated and distributed AI and ML systems.",
-      icon: "🌐"
-    },
-    {
-      title: "Training & Education",
-      description: "Comprehensive training programs to upskill teams on the latest AI & OSS technologies.",
-      icon: "🎓"
-    }
-  ];
+type Product = {
+  name: string;
+  logo: string;
+};
+
+const stackProducts: Product[] = [
+  { name: "Dify", logo: "https://cdn.simpleicons.org/dify" },
+  { name: "Flowise", logo: "https://cdn.simpleicons.org/flowise" },
+  { name: "n8n", logo: "https://cdn.simpleicons.org/n8n" },
+  { name: "LangChain", logo: "https://cdn.simpleicons.org/langchain" },
+  { name: "LlamaIndex", logo: "https://cdn.simpleicons.org/llamaindex" },
+  { name: "LiteLLM", logo: "https://cdn.simpleicons.org/litellm" },
+  { name: "Kong", logo: "https://cdn.simpleicons.org/kong" },
+  { name: "APISIX", logo: "https://cdn.simpleicons.org/apacheapisix" },
+  { name: "Redis", logo: "https://cdn.simpleicons.org/redis" },
+  { name: "Valkey", logo: "https://cdn.simpleicons.org/valkey" },
+  { name: "Qdrant", logo: "https://cdn.simpleicons.org/qdrant" },
+  { name: "Milvus", logo: "https://cdn.simpleicons.org/milvus" },
+  { name: "Weaviate", logo: "https://cdn.simpleicons.org/weaviate" },
+  { name: "PostgreSQL", logo: "https://cdn.simpleicons.org/postgresql" },
+  { name: "Elasticsearch", logo: "https://cdn.simpleicons.org/elasticsearch" },
+  { name: "ClickHouse", logo: "https://cdn.simpleicons.org/clickhouse" },
+  { name: "MinIO", logo: "https://cdn.simpleicons.org/minio" },
+  { name: "Kubernetes", logo: "https://cdn.simpleicons.org/kubernetes" },
+  { name: "Docker", logo: "https://cdn.simpleicons.org/docker" },
+  { name: "Helm", logo: "https://cdn.simpleicons.org/helm" },
+  { name: "Terraform", logo: "https://cdn.simpleicons.org/terraform" },
+  { name: "Argo CD", logo: "https://cdn.simpleicons.org/argocd" },
+  { name: "Kafka", logo: "https://cdn.simpleicons.org/apachekafka" },
+  { name: "RabbitMQ", logo: "https://cdn.simpleicons.org/rabbitmq" },
+  { name: "Ollama", logo: "https://cdn.simpleicons.org/ollama" },
+  { name: "vLLM", logo: "https://cdn.simpleicons.org/vllm" },
+  { name: "MLflow", logo: "https://cdn.simpleicons.org/mlflow" },
+  { name: "OpenTelemetry", logo: "https://cdn.simpleicons.org/opentelemetry" },
+  { name: "Langfuse", logo: "https://cdn.simpleicons.org/langfuse" },
+  { name: "Jaeger", logo: "https://cdn.simpleicons.org/jaeger" },
+  { name: "Prometheus", logo: "https://cdn.simpleicons.org/prometheus" },
+  { name: "Grafana", logo: "https://cdn.simpleicons.org/grafana" },
+];
+
+const capabilities = [
+  {
+    title: "Agent Development",
+    description: "Design and ship role-based AI agents for support, operations, and specialist teams.",
+    icon: Bot,
+  },
+  {
+    title: "Workflow Development",
+    description: "Build agentic workflows with approvals, retries, escalation rules, and policy-aware routing.",
+    icon: Workflow,
+  },
+  {
+    title: "Knowledge and Retrieval Layer",
+    description: "Document processing, retrieval pipelines, and context enrichment for grounded outputs.",
+    icon: Database,
+  },
+  {
+    title: "Performance Engineering",
+    description: "Latency tuning, load planning, and resilience design for production traffic.",
+    icon: Gauge,
+  },
+  {
+    title: "Governance and Security",
+    description: "Prompt controls, redaction, monitoring, and audit-friendly deployment patterns.",
+    icon: Lock,
+  },
+  {
+    title: "Platform Operations Enablement",
+    description: "Operational runbooks, ownership model, and enablement for teams managing the OSS stack.",
+    icon: BriefcaseBusiness,
+  },
+];
+
+const ProductBadge = ({ product }: { product: Product }) => {
+  const [imageError, setImageError] = useState(false);
+  const fallback = product.name
+    .split(/[^A-Za-z0-9]+/)
+    .filter(Boolean)
+    .map((token) => token[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
 
   return (
-    <section className="py-24 bg-secondary/30">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            What We Offer
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            We offer a broad array of products and managed services to harness the potential 
-            of cutting-edge Data and AI technologies.
+    <div className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-background/70 px-3 py-1.5">
+      {imageError ? (
+        <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary/15 text-[10px] font-bold text-primary">
+          {fallback}
+        </span>
+      ) : (
+        <img
+          src={product.logo}
+          alt={`${product.name} logo`}
+          className="h-5 w-5 rounded-sm object-contain"
+          loading="lazy"
+          onError={() => setImageError(true)}
+        />
+      )}
+      <span className="text-xs font-medium text-foreground/85">{product.name}</span>
+    </div>
+  );
+};
+
+const ServicesSection = () => {
+  return (
+    <section className="px-6 py-24 sm:px-10 lg:px-16">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-12 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-3xl">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-primary">Capability Stack</p>
+            <h2 className="text-3xl font-bold leading-tight sm:text-4xl">Everything needed to develop and manage an OSS GenAI platform.</h2>
+          </div>
+          <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
+            Platform architecture, stack operations, and agent/workflow development delivered as one integrated team.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {services.map((service, index) => (
-            <Card 
-              key={index} 
-              className="group hover:shadow-[var(--shadow-card)] hover:border-primary/20 transition-all duration-300"
-            >
-              <CardContent className="p-6">
-                <div className="text-3xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {service.icon}
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-3 leading-tight">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {service.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
+        <div className="mb-10">
+          <p className="mb-4 text-sm font-semibold text-foreground">Open-source products in our delivery toolkit</p>
+          <div className="flex flex-wrap gap-2">
+            {stackProducts.map((product) => (
+              <ProductBadge key={product.name} product={product} />
+            ))}
+          </div>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {capabilities.map((capability) => {
+            const Icon = capability.icon;
+            return (
+              <Card key={capability.title} className="glass-card border-border/70 transition-transform duration-300 hover:-translate-y-1">
+                <CardContent className="p-6">
+                  <div className="mb-4 w-fit rounded-xl bg-primary/15 p-3 text-primary">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mb-2 text-lg font-semibold leading-tight">{capability.title}</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{capability.description}</p>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>

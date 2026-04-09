@@ -1,96 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* OppAI Design System - Professional AI/Data Technology Theme
+/* Modern tech visual system
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 215 25% 27%;
+    --background: 210 33% 98%;
+    --foreground: 219 29% 14%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 25% 27%;
+    --card-foreground: 219 29% 14%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 27%;
+    --popover-foreground: 219 29% 14%;
 
-    --primary: 245 58% 51%;
+    --primary: 198 93% 48%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 245 100% 85%;
+    --primary-glow: 189 95% 72%;
 
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 215 25% 27%;
+    --secondary: 210 33% 95%;
+    --secondary-foreground: 219 29% 14%;
 
-    --muted: 220 14% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 210 33% 95%;
+    --muted-foreground: 218 15% 42%;
 
-    --accent: 259 94% 51%;
+    --accent: 168 76% 39%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 245 58% 51%;
+    --border: 212 27% 87%;
+    --input: 212 27% 87%;
+    --ring: 198 93% 48%;
 
-    --radius: 0.75rem;
+    --radius: 0.9rem;
 
-    /* Custom design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(245 58% 51%), hsl(259 94% 51%));
-    --gradient-hero: linear-gradient(135deg, hsl(245 58% 51% / 0.1), hsl(259 94% 51% / 0.05));
-    --shadow-glow: 0 10px 40px -12px hsl(245 58% 51% / 0.25);
-    --shadow-card: 0 4px 6px -1px hsl(0 0% 0% / 0.1);
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --gradient-primary: linear-gradient(120deg, hsl(198 93% 48%), hsl(168 76% 39%));
+    --gradient-hero: radial-gradient(circle at 20% 20%, hsl(198 93% 48% / 0.18), transparent 35%),
+      radial-gradient(circle at 80% 10%, hsl(168 76% 39% / 0.16), transparent 40%),
+      radial-gradient(circle at 40% 85%, hsl(222 38% 40% / 0.08), transparent 45%);
+    --shadow-glow: 0 20px 60px -25px hsl(198 93% 48% / 0.45);
+    --shadow-card: 0 20px 45px -30px hsl(220 45% 25% / 0.35);
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 222 39% 8%;
+    --foreground: 210 40% 96%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 221 35% 12%;
+    --card-foreground: 210 40% 96%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 221 35% 12%;
+    --popover-foreground: 210 40% 96%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 198 93% 48%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 189 95% 72%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 219 26% 18%;
+    --secondary-foreground: 210 40% 96%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 219 26% 18%;
+    --muted-foreground: 215 20% 72%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 168 76% 39%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 96%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 219 26% 23%;
+    --input: 219 26% 23%;
+    --ring: 198 93% 48%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -108,6 +105,91 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Manrope', sans-serif;
+    background-image: linear-gradient(to bottom, hsl(210 33% 98%), hsl(210 33% 96%));
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.015em;
+  }
+}
+
+@layer utilities {
+  .tech-grid {
+    background-image: linear-gradient(hsl(212 27% 87% / 0.55) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(212 27% 87% / 0.55) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: center;
+  }
+
+  .glass-card {
+    background: linear-gradient(150deg, hsl(0 0% 100% / 0.8), hsl(210 33% 96% / 0.7));
+    border: 1px solid hsl(212 27% 87% / 0.9);
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(10px);
+  }
+
+  .hero-orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(45px);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .animate-rise {
+    animation: rise-up 0.65s ease-out both;
+  }
+
+  .animate-float-slow {
+    animation: float-slow 10s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float-slow 12s ease-in-out infinite;
+    animation-delay: 1.5s;
+  }
+
+  .delay-150 {
+    animation-delay: 0.15s;
+  }
+
+  .delay-300 {
+    animation-delay: 0.3s;
+  }
+}
+
+@keyframes rise-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-16px);
   }
 }
